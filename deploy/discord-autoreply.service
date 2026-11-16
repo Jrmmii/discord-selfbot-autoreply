@@ -1,0 +1,21 @@
+[Unit]
+Description=Discord reply-only runner (jr-indonesia-v1)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/discord-selfbot-autoreply
+EnvironmentFile=%h/discord-selfbot-autoreply/.env
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+ExecStart=/usr/bin/python3 -u -m jr_indonesia_v1
+Restart=on-failure
+RestartSec=30
+# Terminal configuration, identity or delivery-auth failures exit with status 2
+# (see jr_indonesia_v1/runner.py). Do not auto-restart those: review the .env and
+# account state instead. RestartPreventExitStatus takes precedence over Restart.
+RestartPreventExitStatus=2
+TimeoutStopSec=75
+
+[Install]
+WantedBy=default.target

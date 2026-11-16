@@ -1,0 +1,16 @@
+bot_ar.log
+replied_ids.json
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.runtime/
+*.log
+*.out
+state.json
+state.tmp
+rank.json
+author_timestamps.json
+sender.lock
+*.jsonl
